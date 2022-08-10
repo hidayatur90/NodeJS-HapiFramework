@@ -36,6 +36,28 @@ const routes = [
             return "Halaman tidak ditemukan";
         },
     },
+    {
+        method  : "GET",
+        path    : "/users/{username?}",
+        handler : (req, h) => {
+            const {username = "Hida"} = req.params;
+            const { lang } = req.query;
+
+            if (lang == 'id') {
+                return `Hai, ${username}`
+            }
+
+            return `Hello, ${username}`
+        }
+    },
+    {
+        method  : "POST",
+        path    : "/login",
+        handler : (req, h) => {
+            const { username, password } = req.payload;
+            return `Your username is ${username} and your password is ${password}`
+        }
+    }
 ]
 
 
